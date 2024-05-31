@@ -1,0 +1,45 @@
+range PAPER_TRAY = 0..3
+const EMPTY_PAPER_TRAY = 0
+const FULL_PAPER_TRAY = 3
+
+range TONER_LEVEL = 0..2
+const EMPTY_TONER_LEVEL = 0
+const FULL_TONER_LEVEL = 2
+
+
+set Passengers = { passenger1, passenger2 }
+set Technician = {paper_technician, torner_technician}
+set Users = {Passengers, Technician}
+
+
+
+set PassengerProhibitedActions = { acquireReloading, load, unableToload, acquireTonerRefill,refillToner}
+set TechnicianProhibitedActions = {acquirePrinting}
+
+
+
+ADVANCED_TICKETING_SYSTEM = PRINTER_IN_OPERATION[FULL_PAPER_TRAY][FULL_TONER_LEVEL],
+
+PRINTER_IN_OPERATION[papersInTray: PAPER_TRAY] [tonerInPrinter: TONER_LEVEL] =
+ if (papersInTray > EMPTY_PAPER_TRAY) then
+   if (tonerInPrinter > EMPTY_TONER_LEVEL) then
+     // Prioritize printing over reloading:
+     (acquirePrinting -> free -> PRINTER_IN_OPERATION[papersInTray - 1][tonerInPrinter - 1]
+ 	 |acquireReloading -> load -> free -> PRINTER_IN_OPERATION[FULL_PAPER_TRAY][tonerInPrinter]
+	 |acquireTonerRefill -> refillToner -> free -> PRINTER_IN_OPERATION[papersInTray][FULL_TONER_LEVEL])
+   else
+     (notifyTonerEmpty -> acquireTonerRefill -> refillToner -> free -> PRINTER_IN_OPERATION[papersInTray][FULL_TONER_LEVEL])
+ else
+   (notifyPaperEmpty -> acquireReloading -> load -> free -> PRINTER_IN_OPERATION[FULL_PAPER_TRAY][tonerInPrinter]).
+
+
+PASSENGER(Tickets = 1) = USE_PRINTER[1],
+
+USE_PRINTER [ticketNo: 1..Tickets] = (acquirePrinting-> printTicket[ticketNo] -> free ->
+ if(ticketNo + 1 <= Tickets)
+ then USE_PRINTER[ticketNo + 1] // Corrected transition
+ else (end -> END)) + PassengerProhibitedActions.
+
+TECHNICIAN = (acquireReloading -> {load, unableToload} -> acquireTonerRefill -> {load, unableToload} -> free -> TECHNICIAN | end -> END) + TechnicianProhibitedActions.
+
+||PRINTING_SYSTEM = (passenger1: PASSENGER(3) || passenger2: PASSENGER(2) || technician: TECHNICIAN || Users :: ADVANCED_TICKETING_SYSTEM) / {end/ Users.end}.

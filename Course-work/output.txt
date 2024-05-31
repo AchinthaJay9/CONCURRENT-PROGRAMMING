@@ -1,0 +1,23 @@
+Initial state of the machine: no of tickets printed: 3, paper level: 5, toner level: 15
+Printing ticket by Passenger1 Ticket: Ticket{ticketNumber=1, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger1, Phone Number: 123-456-7890, Email Address: passenger1@example.com], locationInfo=TravelInfo[ Destination: Destination1, Departure Location: DepartureLocation1]}
+Ticket printed by Passenger1 Ticket: Ticket{ticketNumber=1, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger1, Phone Number: 123-456-7890, Email Address: passenger1@example.com], locationInfo=TravelInfo[ Destination: Destination1, Departure Location: DepartureLocation1]}
+Passenger Passenger1 got Ticket{ticketNumber=1, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger1, Phone Number: 123-456-7890, Email Address: passenger1@example.com], locationInfo=TravelInfo[ Destination: Destination1, Departure Location: DepartureLocation1]}
+Paper level sufficient, not refilling yet.
+Printing ticket by Passenger2 Ticket: Ticket{ticketNumber=2, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger2, Phone Number: 098-765-4321, Email Address: passenger2@example.com], locationInfo=TravelInfo[ Destination: Destination2, Departure Location: DepartureLocation2]}
+Ticket printed by Passenger2 Ticket: Ticket{ticketNumber=2, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger2, Phone Number: 098-765-4321, Email Address: passenger2@example.com], locationInfo=TravelInfo[ Destination: Destination2, Departure Location: DepartureLocation2]}
+Passenger Passenger2 got Ticket{ticketNumber=2, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger2, Phone Number: 098-765-4321, Email Address: passenger2@example.com], locationInfo=TravelInfo[ Destination: Destination2, Departure Location: DepartureLocation2]}
+Printing ticket by Passenger4 Ticket: Ticket{ticketNumber=4, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger4, Phone Number: 098-765-4321, Email Address: passenger4@example.com], locationInfo=TravelInfo[ Destination: Destination4, Departure Location: DepartureLocation4]}
+Ticket printed by Passenger4 Ticket: Ticket{ticketNumber=4, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger4, Phone Number: 098-765-4321, Email Address: passenger4@example.com], locationInfo=TravelInfo[ Destination: Destination4, Departure Location: DepartureLocation4]}
+Passenger Passenger4 got Ticket{ticketNumber=4, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger4, Phone Number: 098-765-4321, Email Address: passenger4@example.com], locationInfo=TravelInfo[ Destination: Destination4, Departure Location: DepartureLocation4]}
+Printing ticket by Passenger3 Ticket: Ticket{ticketNumber=3, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger3, Phone Number: 123-456-7890, Email Address: passenger3@example.com], locationInfo=TravelInfo[ Destination: Destination3, Departure Location: DepartureLocation3]}
+Ticket printed by Passenger3 Ticket: Ticket{ticketNumber=3, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger3, Phone Number: 123-456-7890, Email Address: passenger3@example.com], locationInfo=TravelInfo[ Destination: Destination3, Departure Location: DepartureLocation3]}
+Passenger Passenger3 got Ticket{ticketNumber=3, ticketPrice=10.00, passengerInfo=PassengerInfo[ UserID: Passenger3, Phone Number: 123-456-7890, Email Address: passenger3@example.com], locationInfo=TravelInfo[ Destination: Destination3, Departure Location: DepartureLocation3]}
+Paper level sufficient, not refilling yet.
+All passengers have been served.
+No passengers, stopping paper refill.
+No passengers, stopping paper refill.
+No passengers, stopping paper refill.
+All technicians have finished their work.
+Final state of the machine: no of tickets printed: 7, paper level: 1, toner level: 11
+
+Process finished with exit code 0
